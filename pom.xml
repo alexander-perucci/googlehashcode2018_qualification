@@ -59,6 +59,19 @@
 			</roles>
 			<timezone>Italy/Rome</timezone>
 		</developer>
+				<developer>
+			<id>gianluca_filippome</id>
+			<name>Gianluca Filippone</name>
+			<email>gianluca.filippone@student.univaq.it</email>
+			<url>https://github.com/Gianlufil/</url>
+			<organization>University of LAquila</organization>
+			<organizationUrl>http://www.univaq.it/en/</organizationUrl>
+			<roles>
+				<role>architect</role>
+				<role>developer</role>
+			</roles>
+			<timezone>Italy/Rome</timezone>
+		</developer>
 	</developers>
 
 	<properties>
