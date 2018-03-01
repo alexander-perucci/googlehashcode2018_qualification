@@ -27,6 +27,7 @@ import it.univaq.google.hashcode.model.Coordinate;
 import it.univaq.google.hashcode.model.ProblemInstance;
 import it.univaq.google.hashcode.model.Ride;
 import it.univaq.google.hashcode.model.Solution;
+import it.univaq.google.hashcode.model.Vehicle;
 
 public class IOUtil {
 
@@ -63,11 +64,17 @@ public class IOUtil {
 
 	public static void generateOutput(Solution solution, File outFile) throws IOException {
 		System.out.println("- SOLUTION Score: " + solution.getScore());
-
+		
 		// create solution to submit
 		StringBuilder solutionString = new StringBuilder();
-
-		// FIX:
+		
+		for (Vehicle vehicle : solution.getVehicles()) {
+			solutionString.append(vehicle.getRideDone().size());
+			for (Ride ride : vehicle.getRideDone()) {
+				solutionString.append(SEPARATOR + ride.getId());
+			}
+			solutionString.append(NEW_LINE);
+		}
 
 		FileUtils.writeStringToFile(outFile, solutionString.toString(), Charsets.ISO_8859_1);
 	}

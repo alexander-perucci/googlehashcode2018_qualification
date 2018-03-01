@@ -16,13 +16,27 @@
  */
 package it.univaq.google.hashcode.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Solution {
+	private List<Vehicle> vehicles;
 	private long score;
-	
-	// FIX: add attributes needed for the solution
-	
+
+	public Solution() {
+		vehicles = new ArrayList<>();
+	}
+
 	public Solution(long score) {
 		this.score = score;
+	}
+
+	public List<Vehicle> getVehicles() {
+		return vehicles;
+	}
+
+	public void setVehicles(List<Vehicle> vehicles) {
+		this.vehicles = vehicles;
 	}
 
 	public long getScore() {
