@@ -16,7 +16,7 @@
  */
 package it.univaq.google.hashcode.model;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class ProblemInstance {
@@ -29,7 +29,7 @@ public class ProblemInstance {
 	private long steps;
 
 	public ProblemInstance() {
-		rides = new ArrayList<>();
+		rides = new LinkedList<>();
 	}
 
 	public List<Ride> getRides() {

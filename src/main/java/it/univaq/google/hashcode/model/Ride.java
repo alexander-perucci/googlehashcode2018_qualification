@@ -1,11 +1,20 @@
 package it.univaq.google.hashcode.model;
 
 public class Ride {
+	private int id;
 	private Coordinate start;
 	private Coordinate end;
 
 	private int earliestStart;
 	private int latestFinish;
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 
 	public Coordinate getStart() {
 		return start;

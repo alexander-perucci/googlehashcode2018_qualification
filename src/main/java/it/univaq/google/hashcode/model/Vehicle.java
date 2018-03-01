@@ -1,5 +1,8 @@
 package it.univaq.google.hashcode.model;
 
+import java.util.LinkedList;
+import java.util.List;
+
 public class Vehicle {
 	private Coordinate currentPosition;
 	private Coordinate previousPosition;
@@ -8,6 +11,20 @@ public class Vehicle {
 	private Ride currentRide;
 	private Ride previousRide;
 	private Ride nextRide;
+
+	private List<Ride> rideDone;
+
+	public Vehicle() {
+		rideDone = new LinkedList<>();
+	}
+
+	public List<Ride> getRideDone() {
+		return rideDone;
+	}
+
+	public void setRideDone(List<Ride> rideDone) {
+		this.rideDone = rideDone;
+	}
 
 	public Coordinate getCurrentPosition() {
 		return currentPosition;
