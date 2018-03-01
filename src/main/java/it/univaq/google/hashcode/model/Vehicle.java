@@ -14,6 +14,8 @@ public class Vehicle {
 
 	private List<Ride> rideDone;
 
+	private int currentStep;
+
 	public Vehicle() {
 		rideDone = new LinkedList<>();
 	}
@@ -74,4 +76,11 @@ public class Vehicle {
 		this.nextRide = nextRide;
 	}
 
+	public int getCurrentStep() {
+		return currentStep;
+	}
+
+	public void setCurrentStep(int currentStep) {
+		this.currentStep = currentStep;
+	}
 }
