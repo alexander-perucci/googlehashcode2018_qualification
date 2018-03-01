@@ -51,18 +51,25 @@ public class GreedySolvableImplLor implements ISolvable {
 			
 			List<Vehicle> veicoliLiberi = new ArrayList<Vehicle>();
 			for(Vehicle vei : veicoli) {
-				if(vei.getCurrentRide() == null)
+				if(vei.getCurrentRide() == null && vei.getNextRide() == null)
 					veicoliLiberi.add(vei);	
 			}
 			
 			
 			//assegno i veicoli liberi alle rides disponibili
-			for(Vehicle vei : veicoliLiberi) {
+			//considerando però se posso prenderla, ossia se T<ride.starttime
+			int ss = veicoliLiberi.size();
+			for(int k=0; k<ss; k++) {
+				Vehicle vei = veicoliLiberi.get(k);
 				List<VehicleDistance> veiDis = new ArrayList<VehicleDistance>();
+				
 				for(Ride ride : problemInstance.getRides()) {
 					int distance = getDistanceTo(vei, ride.getStart());
-					VehicleDistance vd = new VehicleDistance(vei, distance, ride);
-					veiDis.add(vd);
+					
+					//if(i + distance >= ride.getEarliestStart()) {
+						VehicleDistance vd = new VehicleDistance(vei, distance, ride);
+						veiDis.add(vd);
+					//}
 				}
 				
 				VehicleDistance vdMin = new VehicleDistance(null, Integer.MAX_VALUE, null);
@@ -73,8 +80,12 @@ public class GreedySolvableImplLor implements ISolvable {
 				}
 				
 				try {
-					vdMin.vehicle.setNextRide(vdMin.ride);
-					problemInstance.getRides().remove(vdMin.ride);
+					if(vdMin.vehicle != null) {
+						vdMin.vehicle.setNextRide(vdMin.ride);
+						problemInstance.getRides().remove(vdMin.ride);
+						veicoliLiberi.remove(k);
+						ss = veicoliLiberi.size();
+					}
 				}
 				catch(Exception e) {
 					//i can have no ride to assign
@@ -157,6 +168,10 @@ public class GreedySolvableImplLor implements ISolvable {
 	
 	public int getDistanceTo(Vehicle vei, Coordinate destPos) {
 		return Math.abs(vei.getCurrentPosition().x-destPos.x)+Math.abs(vei.getCurrentPosition().y-destPos.y);
+	}
+	
+	public int getDistanceGeneric(Coordinate startPos, Coordinate destPos) {
+		return Math.abs(startPos.x-destPos.x)+Math.abs(startPos.y-destPos.y);
 	}
 	
 }
