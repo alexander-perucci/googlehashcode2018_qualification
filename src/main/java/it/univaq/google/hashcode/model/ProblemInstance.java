@@ -16,8 +16,68 @@
  */
 package it.univaq.google.hashcode.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ProblemInstance {
 
-	// FIX: problem instance
+	private List<Ride> rides;
+	private int rows;
+	private int columns;
+	private int vehicles;
+	private int bonus;
+	private long steps;
+
+	public ProblemInstance() {
+		rides = new ArrayList<>();
+	}
+
+	public List<Ride> getRides() {
+		return rides;
+	}
+
+	public void setRides(List<Ride> rides) {
+		this.rides = rides;
+	}
+
+	public int getRows() {
+		return rows;
+	}
+
+	public void setRows(int rows) {
+		this.rows = rows;
+	}
+
+	public int getColumns() {
+		return columns;
+	}
+
+	public void setColumns(int columns) {
+		this.columns = columns;
+	}
+
+	public int getVehicles() {
+		return vehicles;
+	}
+
+	public void setVehicles(int vehicles) {
+		this.vehicles = vehicles;
+	}
+
+	public int getBonus() {
+		return bonus;
+	}
+
+	public void setBonus(int bonus) {
+		this.bonus = bonus;
+	}
+
+	public long getSteps() {
+		return steps;
+	}
+
+	public void setSteps(long steps) {
+		this.steps = steps;
+	}
 
 }
