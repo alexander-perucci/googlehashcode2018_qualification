@@ -47,15 +47,15 @@ public class IOUtil {
 		problemInstance.setSteps(Integer.parseInt(elementFirstLine[5]));
 
 		for (int i = 0; i< rides; i++) {
-			String[] rideLine = inputLines.get(1+1).split(SEPARATOR);
+			String[] rideLine = inputLines.get(i+1).split(SEPARATOR);
 			Ride ride = new Ride();
+			ride.setId(i);
 			ride.setStart(new Coordinate(Integer.parseInt(rideLine[0]), Integer.parseInt(rideLine[1])));
 			ride.setEnd(new Coordinate(Integer.parseInt(rideLine[2]), Integer.parseInt(rideLine[3])));
 			ride.setEarliestStart(Integer.parseInt(rideLine[4]));
-			ride.setEarliestStart(Integer.parseInt(rideLine[5]));
+			ride.setLatestFinish(Integer.parseInt(rideLine[5]));
 			problemInstance.getRides().add(ride);	
-		}
-		
+		}		
 		
 		return problemInstance;
 
