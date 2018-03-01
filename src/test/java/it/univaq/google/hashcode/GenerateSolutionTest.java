@@ -36,36 +36,45 @@ public class GenerateSolutionTest {
 	public static final String OUTPUT_FILE_EXTENSION = ".out";
 
 	@Test
-	public void test_kittens() {
+	public void test_a_example() {
 		try {
-			generateSolution("kittens");
+			generateSolution("a_example");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
 
 	@Test
-	public void test_me_at_the_zoo() {
+	public void test_b_should_be_easy() {
 		try {
-			generateSolution("me_at_the_zoo");
+			generateSolution("b_should_be_easy");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
 
 	@Test
-	public void test_trending_today() {
+	public void test_c_no_hurry() {
 		try {
-			generateSolution("trending_today");
+			generateSolution("c_no_hurry");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
 
 	@Test
-	public void test_videos_worth_spreading() {
+	public void test_d_metropolis() {
 		try {
-			generateSolution("videos_worth_spreading");
+			generateSolution("d_metropolis");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	@Test
+	public void test_e_high_bonus() {
+		try {
+			generateSolution("e_high_bonus");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

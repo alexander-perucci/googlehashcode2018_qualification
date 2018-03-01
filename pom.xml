@@ -168,7 +168,7 @@
 
 <!--
 
-execute single solution: mvn -Dtest=GenerateSolutionTest#test_kittens test
+execute single solution: mvn -Dtest=GenerateSolutionTest#test_a_example test
 execute all solution: mvn -Dtest=GenerateSolutionTest#test* test
 create zip: mvn -Pzip
 
