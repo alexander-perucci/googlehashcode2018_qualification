@@ -66,10 +66,10 @@ public class GreedySolvableImplLor implements ISolvable {
 				for(Ride ride : problemInstance.getRides()) {
 					int distance = getDistanceTo(vei, ride.getStart());
 					
-					//if(i + distance >= ride.getEarliestStart()) {
+					if(i + distance >= ride.getEarliestStart()) {
 						VehicleDistance vd = new VehicleDistance(vei, distance, ride);
 						veiDis.add(vd);
-					//}
+					}
 				}
 				
 				VehicleDistance vdMin = new VehicleDistance(null, Integer.MAX_VALUE, null);
@@ -93,7 +93,7 @@ public class GreedySolvableImplLor implements ISolvable {
 			}
 			
 			
-			
+			int ud = 0;
 			for(Vehicle vei : veicoli) {
 				//se il veicolo ha una curRide o nextRide lo muovo di uno verso la rideEnd o rideStart, altrimenti?
 				if(vei.getCurrentRide() != null) {
@@ -106,6 +106,33 @@ public class GreedySolvableImplLor implements ISolvable {
 				}
 				else {
 					//TODO
+					try {
+						Ride toGoNear = null;
+						int bestDis = Integer.MAX_VALUE;
+						for(Ride rid : problemInstance.getRides()) {
+							if(getDistanceTo(vei, rid.getStart()) < bestDis) {
+								bestDis = getDistanceTo(vei, rid.getStart());
+								toGoNear = rid;
+							}
+							
+						}
+
+						vei.setCurrentPosition(getNextVeichleStep(vei, toGoNear.getStart()));
+					}
+					catch(Exception e) {
+						
+					}
+					
+					/*
+					if(ud == 0) {
+						vei.setCurrentPosition(getNextVeichleStep(vei, new Coordinate(vei.getCurrentPosition().x+1, vei.getCurrentPosition().y)));
+						ud = 1;
+					}
+					else if(ud == 1) {
+						vei.setCurrentPosition(getNextVeichleStep(vei, new Coordinate(vei.getCurrentPosition().x, vei.getCurrentPosition().y+1)));
+						ud = 0;
+					}
+					*/
 					
 				}
 			}
