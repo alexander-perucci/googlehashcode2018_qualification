@@ -25,10 +25,12 @@ public class Solution {
 
 	public Solution() {
 		vehicles = new ArrayList<>();
+		score = 0L;
 	}
 
 	public Solution(long score) {
 		this.score = score;
+		vehicles = new ArrayList<>();
 	}
 
 	public List<Vehicle> getVehicles() {
