@@ -57,9 +57,9 @@ public class GreedySolvableImplLor implements ISolvable {
 			
 			
 			//assegno i veicoli liberi alle rides disponibili
-			for(Ride ride : problemInstance.getRides()) {
+			for(Vehicle vei : veicoliLiberi) {
 				List<VehicleDistance> veiDis = new ArrayList<VehicleDistance>();
-				for(Vehicle vei : veicoliLiberi) {
+				for(Ride ride : problemInstance.getRides()) {
 					int distance = getDistanceTo(vei, ride.getStart());
 					VehicleDistance vd = new VehicleDistance(vei, distance, ride);
 					veiDis.add(vd);
@@ -71,12 +71,17 @@ public class GreedySolvableImplLor implements ISolvable {
 						vdMin = vd;
 					}
 				}
-
-				//remove the ride from list
-				vdMin.vehicle.setNextRide(vdMin.ride);
-				problemInstance.getRides().remove(vdMin.ride);
 				
+				try {
+					vdMin.vehicle.setNextRide(vdMin.ride);
+					problemInstance.getRides().remove(vdMin.ride);
+				}
+				catch(Exception e) {
+					//i can have no ride to assign
+				}
 			}
+			
+			
 			
 			for(Vehicle vei : veicoli) {
 				//se il veicolo ha una curRide o nextRide lo muovo di uno verso la rideEnd o rideStart, altrimenti?
@@ -106,10 +111,9 @@ public class GreedySolvableImplLor implements ISolvable {
 					}
 				}
 				else if(vei.getNextRide() != null) {
-					if(vei.getCurrentPosition().x == vei.getCurrentRide().getStart().x && vei.getCurrentPosition().y == vei.getNextRide().getEnd().y) {
+					if(vei.getCurrentPosition().x == vei.getNextRide().getStart().x && vei.getCurrentPosition().y == vei.getNextRide().getStart().y) {
 						//è finito il tragitto, il veicolo è libero
-						vei.getRideDone().add(vei.getCurrentRide());
-						vei.setCurrentRide(null);
+						vei.setCurrentRide(vei.getNextRide());
 						vei.setNextRide(null);
 						
 					}
@@ -120,8 +124,11 @@ public class GreedySolvableImplLor implements ISolvable {
 			
 			
 		}
+
+		sol.setVehicles(veicoli);
 		
-		return new Solution(ProblemUtil.calculateScore());
+		
+		return sol;
 	}
 	
 	
