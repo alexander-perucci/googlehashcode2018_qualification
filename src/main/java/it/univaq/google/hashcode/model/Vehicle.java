@@ -18,6 +18,7 @@ public class Vehicle {
 
 	public Vehicle() {
 		rideDone = new LinkedList<>();
+		currentStep = 0;
 	}
 
 	public List<Ride> getRideDone() {
