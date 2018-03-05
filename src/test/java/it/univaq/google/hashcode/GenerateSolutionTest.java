@@ -21,6 +21,7 @@ import java.io.IOException;
 
 import org.junit.Test;
 
+import it.univaq.google.hashcode.impl.AlexSolvableImpl;
 import it.univaq.google.hashcode.impl.GreedySolvableImpl;
 import it.univaq.google.hashcode.model.ProblemInstance;
 import it.univaq.google.hashcode.model.Solution;
@@ -90,7 +91,7 @@ public class GenerateSolutionTest {
 				.parseInput(new File(INPUT_TEST_RESOURCES + fileName + INPUT_FILE_EXTENSION));
 
 		// instance with correct implementation
-		ISolvable solvable = new GreedySolvableImpl();
+		ISolvable solvable = new AlexSolvableImpl();
 
 		// get solution 
 		Solution solution = solvable.getSolution(problemInstance);
